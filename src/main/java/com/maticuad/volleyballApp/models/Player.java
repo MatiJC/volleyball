@@ -3,8 +3,7 @@ package com.maticuad.volleyballApp.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Entity
 @Table(name = "PLAYER")

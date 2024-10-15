@@ -27,11 +27,16 @@ public class IPlayerService implements PlayerService {
 
     @Override
     public Player createPlayer(Player player) {
-
+        return null;
     }
 
     @Override
     public void updatePlayer(Long playerId) {
+
+    }
+
+    @Override
+    public void deletePlayer(Long playerId) {
 
     }
 

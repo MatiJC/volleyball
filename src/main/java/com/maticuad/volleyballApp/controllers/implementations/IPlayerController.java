@@ -22,6 +22,18 @@ public class IPlayerController implements PlayerController {
     private final PlayerTranslator playerTranslator;
 
     @Override
+    @GetMapping("/{id}")
+    public ResponseEntity<PlayerDTO> getPlayerById(@PathVariable Long id) {
+        return null;
+    }
+
+    @Override
+    @GetMapping
+    public ResponseEntity<List<PlayerDTO>> getAllPlayers() {
+        return null;
+    }
+
+    @Override
     @PostMapping
     public ResponseEntity<Player> createPlayer(@RequestBody @Valid PlayerDTO player) {
         Player created = this.playerService.createPlayer(this.playerTranslator.toPersistent(player));
@@ -37,18 +49,6 @@ public class IPlayerController implements PlayerController {
     @Override
     @DeleteMapping("/{id}")
     public ResponseEntity<PlayerDTO> deletePlayer(@PathVariable Long id) {
-        return null;
-    }
-
-    @Override
-    @GetMapping("/{id}")
-    public ResponseEntity<PlayerDTO> getPlayerById(@PathVariable Long id) {
-        return null;
-    }
-
-    @Override
-    @GetMapping
-    public ResponseEntity<List<PlayerDTO>> getPlayers() {
         return null;
     }
 }

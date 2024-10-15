@@ -2,13 +2,9 @@ package com.maticuad.volleyballApp.dto;
 
 import com.maticuad.volleyballApp.models.Gender;
 import com.maticuad.volleyballApp.models.Position;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class PlayerDTO {

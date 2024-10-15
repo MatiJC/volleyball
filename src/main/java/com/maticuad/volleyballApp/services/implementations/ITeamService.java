@@ -52,6 +52,11 @@ public class ITeamService implements TeamService {
     }
 
     @Override
+    public void deleteTeam(Long teamId) {
+
+    }
+
+    @Override
     @Transactional
     public void transferPlayer(Long playerId, String teamFromName, String teamDestinationName) throws ApiException {
         Player player = playerService.getPlayerById(playerId);

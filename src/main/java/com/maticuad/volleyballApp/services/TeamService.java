@@ -13,6 +13,7 @@ public interface TeamService {
     List<Player> getTeamRoster(Team team) throws ApiException;
     void createTeam();
     void updateTeam(Long teamId);
+    void deleteTeam(Long teamId);
     void transferPlayer(Long playerId, String teamFromName, String teamDestinationName) throws ApiException;
     void removePlayer(Player player, Team team) throws ApiException;
     void addPlayer(Player player, Team team) throws ApiException;

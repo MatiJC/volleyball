@@ -10,7 +10,6 @@ public interface PlayerService {
     Player getPlayerById(Long id) throws ApiException;
     Player createPlayer(Player player);
     void updatePlayer(Long playerId);
+    void deletePlayer(Long playerId);
     String playerFullName(Player player);
-
-
 }

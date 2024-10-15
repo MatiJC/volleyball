@@ -21,24 +21,6 @@ public class ITeamController implements TeamController {
     private final TeamTranslator teamTranslator;
 
     @Override
-    @PostMapping
-    public ResponseEntity<Team> createTeam(TeamDTO team) {
-        return null;
-    }
-
-    @Override
-    @PutMapping("/{id}")
-    public ResponseEntity<Team> updateTeam(@PathVariable Long id) {
-        return null;
-    }
-
-    @Override
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Team> deleteTeam(@PathVariable Long id) {
-        return null;
-    }
-
-    @Override
     @GetMapping
     public ResponseEntity<List<Team>> getAllTeams() {
         return null;
@@ -53,6 +35,24 @@ public class ITeamController implements TeamController {
     @Override
     @GetMapping("/{name}")
     public ResponseEntity<Team> getTeamByName(@PathVariable String name) {
+        return null;
+    }
+
+    @Override
+    @PostMapping
+    public ResponseEntity<Team> createTeam(TeamDTO team) {
+        return null;
+    }
+
+    @Override
+    @PutMapping("/{id}")
+    public ResponseEntity<Team> updateTeam(@PathVariable Long id) {
+        return null;
+    }
+
+    @Override
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Team> deleteTeam(@PathVariable Long id) {
         return null;
     }
 }

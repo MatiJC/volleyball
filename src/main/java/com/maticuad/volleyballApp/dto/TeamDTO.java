@@ -1,6 +1,6 @@
 package com.maticuad.volleyballApp.dto;
 
-import com.maticuad.volleyballApp.models.Gender;
+import com.maticuad.volleyballApp.model.Persistance.Gender;
 import lombok.*;
 
 import java.util.List;

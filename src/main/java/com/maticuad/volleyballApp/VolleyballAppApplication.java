@@ -1,9 +1,6 @@
 package com.maticuad.volleyballApp;
 
-import com.maticuad.volleyballApp.models.Role;
-import com.maticuad.volleyballApp.models.User;
-import com.maticuad.volleyballApp.repositories.UserRepository;
-import com.maticuad.volleyballApp.services.AuthenticationService;
+import com.maticuad.volleyballApp.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

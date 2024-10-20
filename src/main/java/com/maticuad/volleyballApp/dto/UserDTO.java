@@ -1,6 +1,6 @@
 package com.maticuad.volleyballApp.dto;
 
-import com.maticuad.volleyballApp.models.Role;
+import com.maticuad.volleyballApp.model.Persistance.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

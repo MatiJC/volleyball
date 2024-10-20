@@ -1,7 +1,7 @@
 package com.maticuad.volleyballApp.dto;
 
-import com.maticuad.volleyballApp.models.Gender;
-import com.maticuad.volleyballApp.models.Position;
+import com.maticuad.volleyballApp.model.Persistance.Gender;
+import com.maticuad.volleyballApp.model.Persistance.Position;
 import lombok.*;
 
 @Data

@@ -11,9 +11,9 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RestResponse<T> {
+public class RestResponse<DATA_TYPE> {
     private String status;
     private String message;
-    private T data;
+    private DATA_TYPE data;
     private List<ErrorDetail> errors;
 }

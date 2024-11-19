@@ -1,11 +1,11 @@
-package com.maticuad.volleyballApp.translator;
+package com.maticuad.volleyballApp.mapper;
 
 import com.maticuad.volleyballApp.dto.PlayerDTO;
 import com.maticuad.volleyballApp.model.Persistance.Player;
 
 import java.util.List;
 
-public interface PlayerTranslator {
+public interface PlayerMapper {
     Player toPersistent(PlayerDTO dto);
     PlayerDTO toDTO(Player player);
     List<Player> toPersistent(List<PlayerDTO> list);

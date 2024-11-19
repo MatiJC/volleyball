@@ -15,4 +15,5 @@ public class PlayerDTO {
     private Position position;
     private TeamDTO team;
     private int shirtNumber;
+    private Boolean deleted;
 }

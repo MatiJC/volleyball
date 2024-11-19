@@ -13,4 +13,5 @@ public class TeamDTO {
     private String name;
     private List<PlayerDTO> players;
     private Gender gender;
+    private Boolean deleted;
 }

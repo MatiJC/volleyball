@@ -31,13 +31,13 @@ public class ITeamService implements TeamService {
     }
 
     @Override
-    public Team create(Team entity) {
+    public Long create(Team entity) {
         return null;
     }
 
     @Override
-    public void update(Long id) {
-
+    public Long update(Team team, Long id) {
+        return null;
     }
 
     @Override
@@ -56,8 +56,8 @@ public class ITeamService implements TeamService {
     }
 
     @Override
-    public List<Player> getTeamRoster(Team team) {
-        return null;
+    public boolean existsByName(String name) {
+        return this.teamRepository.findByName(name).isPresent();
     }
 
     @Override
@@ -78,7 +78,7 @@ public class ITeamService implements TeamService {
         }
         if (!isPlayerInTeam(player, team)) {
         }
-        this.getTeamRoster(team).remove(player);
+
     }
 
     @Override
@@ -89,12 +89,11 @@ public class ITeamService implements TeamService {
         if (checkRosterCapacity(team)) {
 
         }
-        this.getTeamRoster(team).add(player);
     }
 
     @Override
     public boolean isPlayerInTeam(Player player, Team team) {
-        return this.getTeamRoster(team).contains(player);
+        return false;
     }
 
     @Override

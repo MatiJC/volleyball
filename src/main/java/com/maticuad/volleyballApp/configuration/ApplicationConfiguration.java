@@ -1,7 +1,9 @@
 package com.maticuad.volleyballApp.configuration;
 
 import com.maticuad.volleyballApp.repository.UserRepository;
-import com.maticuad.volleyballApp.translator.implementations.ITeamTranslator;
+
+import com.maticuad.volleyballApp.mapper.implementations.IPlayerMapper;
+import com.maticuad.volleyballApp.mapper.implementations.ITeamMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,9 +15,15 @@ public class ApplicationConfiguration {
     private final UserRepository userRepository;
 
     @Bean
-    public ITeamTranslator teamTranslator() {
-        return new ITeamTranslator();
+    public ITeamMapper teamMapper() {
+        return new ITeamMapper(this.playerMapper());
     }
+
+    @Bean
+    public IPlayerMapper playerMapper() {
+        return new IPlayerMapper(this.teamMapper());
+    }
+
 //    @Bean
 //    public UserDetailsService userDetailsService() {
 //        return username -> userRepository.findByUsername(username)

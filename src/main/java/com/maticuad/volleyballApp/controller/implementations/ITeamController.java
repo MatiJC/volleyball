@@ -2,9 +2,8 @@ package com.maticuad.volleyballApp.controller.implementations;
 
 import com.maticuad.volleyballApp.controller.TeamController;
 import com.maticuad.volleyballApp.dto.TeamDTO;
-import com.maticuad.volleyballApp.model.Api.RestResponse;
 import com.maticuad.volleyballApp.service.TeamService;
-import com.maticuad.volleyballApp.translator.TeamTranslator;
+import com.maticuad.volleyballApp.mapper.TeamMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +18,7 @@ import java.util.List;
 public class ITeamController implements TeamController {
 
     private final TeamService teamService;
-    private final TeamTranslator teamTranslator;
+    private final TeamMapper teamMapper;
 
     @Override
     @GetMapping
@@ -41,19 +40,20 @@ public class ITeamController implements TeamController {
 
     @Override
     @PostMapping
-    public ResponseEntity<RestResponse<TeamDTO>> createTeam(@Valid @RequestBody TeamDTO team) {
+    public ResponseEntity<Long> createTeam(@Valid @RequestBody TeamDTO team) {
         return null;
     }
 
     @Override
     @PutMapping("/{id}")
-    public ResponseEntity<RestResponse<TeamDTO>> updateTeam(@PathVariable Long id) {
+    public ResponseEntity<Long> updateTeam(@RequestBody @Valid TeamDTO team,
+                                           @PathVariable Long id) {
         return null;
     }
 
     @Override
     @DeleteMapping("/{id}")
-    public ResponseEntity<RestResponse<TeamDTO>> deleteTeam(@PathVariable Long id) {
+    public ResponseEntity<Long> deleteTeam(@PathVariable Long id) {
         return null;
     }
 }

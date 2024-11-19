@@ -33,9 +33,13 @@ public class Team {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @Column(name = "DELETED_")
+    private Boolean deleted = false;
+
     public Team(String name, List<Player> players, Gender gender) {
         this.name = name;
         this.players = players;
         this.gender = gender;
+        this.deleted = false;
     }
 }

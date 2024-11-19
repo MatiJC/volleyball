@@ -1,10 +1,13 @@
 package com.maticuad.volleyballApp.service.implementations;
 
 import com.maticuad.volleyballApp.service.GenericService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class IGenericService<PERSISTENT> implements GenericService<PERSISTENT> {
+
     @Override
     public PERSISTENT getById(Long id) {
         return null;
@@ -16,13 +19,13 @@ public class IGenericService<PERSISTENT> implements GenericService<PERSISTENT> {
     }
 
     @Override
-    public PERSISTENT create(PERSISTENT entity) {
+    public Long create(PERSISTENT entity) {
         return null;
     }
 
     @Override
-    public void update(Long id) {
-
+    public Long update(PERSISTENT persistent, Long id) {
+        return null;
     }
 
     @Override
@@ -39,4 +42,5 @@ public class IGenericService<PERSISTENT> implements GenericService<PERSISTENT> {
     public void preUpdate(PERSISTENT entity) {
 
     }
+
 }

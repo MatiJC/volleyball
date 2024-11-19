@@ -1,9 +1,9 @@
-package com.maticuad.volleyballApp.translator.implementations;
+package com.maticuad.volleyballApp.mapper.implementations;
 
 import com.maticuad.volleyballApp.dto.TeamDTO;
 import com.maticuad.volleyballApp.model.Persistance.Team;
-import com.maticuad.volleyballApp.translator.PlayerTranslator;
-import com.maticuad.volleyballApp.translator.TeamTranslator;
+import com.maticuad.volleyballApp.mapper.PlayerMapper;
+import com.maticuad.volleyballApp.mapper.TeamMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -12,9 +12,9 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Component
-public class ITeamTranslator implements TeamTranslator{
+public class ITeamMapper implements TeamMapper {
 
-    private final PlayerTranslator teamTranslator;
+    private final PlayerMapper playerMapper;
 
     @Override
     public Team toPersistent(TeamDTO dto) {
@@ -22,7 +22,8 @@ public class ITeamTranslator implements TeamTranslator{
         team.setName(dto.getName());
         team.setId(dto.getId());
         team.setGender(dto.getGender());
-        team.setPlayers(this.teamTranslator.toPersistent(dto.getPlayers()));
+        team.setPlayers(this.playerMapper.toPersistent(dto.getPlayers()));
+        team.setDeleted(dto.getDeleted());
         return team;
     }
 
@@ -32,7 +33,8 @@ public class ITeamTranslator implements TeamTranslator{
         teamDTO.setId(team.getId());
         teamDTO.setName(team.getName());
         teamDTO.setGender(team.getGender());
-        teamDTO.setPlayers(this.teamTranslator.toDTO(team.getPlayers()));
+        teamDTO.setPlayers(this.playerMapper.toDTO(team.getPlayers()));
+        teamDTO.setDeleted(team.getDeleted());
         return teamDTO;
     }
 

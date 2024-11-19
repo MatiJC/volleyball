@@ -39,6 +39,9 @@ public class Player {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @Column(name = "DELETED_")
+    private Boolean deleted = false;
+
     public Player(String firstName, String lastName, Integer shirtNumber,
                   Position position, Team team, Gender gender) {
         this.firstName = firstName;
@@ -47,5 +50,6 @@ public class Player {
         this.position = position;
         this.team = team;
         this.gender = gender;
+        this.deleted = false;
     }
 }

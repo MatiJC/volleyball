@@ -48,7 +48,6 @@ public class IPlayerController implements PlayerController {
                                                @PathVariable Long id) {
         Long updated = this.playerService.update(this.playerMapper.toPersistent(player), id);
         return new ResponseEntity<>(updated, HttpStatus.ACCEPTED);
-
     }
 
     @Override

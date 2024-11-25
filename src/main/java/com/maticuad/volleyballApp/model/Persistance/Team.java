@@ -36,6 +36,9 @@ public class Team {
     @Column(name = "DELETED_")
     private Boolean deleted = false;
 
+    @Column(name = "FILE_URL")
+    private String fileUrl;
+
     public Team(String name, List<Player> players, Gender gender) {
         this.name = name;
         this.players = players;

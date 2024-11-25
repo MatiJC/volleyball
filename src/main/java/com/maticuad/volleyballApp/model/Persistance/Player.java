@@ -42,6 +42,9 @@ public class Player {
     @Column(name = "DELETED_")
     private Boolean deleted = false;
 
+    @Column(name = "FILE_URL")
+    private String fileUrl;
+
     public Player(String firstName, String lastName, Integer shirtNumber,
                   Position position, Team team, Gender gender) {
         this.firstName = firstName;

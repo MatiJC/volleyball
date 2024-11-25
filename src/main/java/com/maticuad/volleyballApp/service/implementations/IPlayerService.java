@@ -1,9 +1,13 @@
 package com.maticuad.volleyballApp.service.implementations;
 
+import com.maticuad.volleyballApp.exception.ServiceValidationException;
 import com.maticuad.volleyballApp.model.Api.ErrorDetail;
 import com.maticuad.volleyballApp.model.Persistance.Player;
+import com.maticuad.volleyballApp.model.Persistance.Team;
 import com.maticuad.volleyballApp.repository.PlayerRepository;
+import com.maticuad.volleyballApp.repository.TeamRepository;
 import com.maticuad.volleyballApp.service.PlayerService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.stereotype.Service;
@@ -16,13 +20,15 @@ import java.util.List;
 public class IPlayerService implements PlayerService {
 
     private final PlayerRepository playerRepository;
+    private final TeamRepository teamRepository;
 
     @Override
     public Player getById(Long id) {
         try {
-            return this.playerRepository.findById(id).orElse(null);
+            return this.playerRepository.findById(id).orElseThrow( () ->
+                    new EntityNotFoundException("Player with id " + id + " not found"));
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new ServiceException(e.getMessage());
         }
     }
 
@@ -31,16 +37,21 @@ public class IPlayerService implements PlayerService {
         try {
             return this.playerRepository.findAll();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new ServiceException(e.getMessage());
         }
     }
 
     @Override
     public List<Player> getAllPlayersByTeam(String teamName) {
         try {
-            return List.of();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            Team team = teamRepository.findByName(teamName).orElseThrow( () ->
+                    new EntityNotFoundException("Team with name " + teamName + " not found"));
+            return this.playerRepository.findPlayersByTeam(team).orElseThrow( () ->
+                new EntityNotFoundException("No player was found in " + teamName));
+        } catch (EntityNotFoundException e) {
+            throw e;
+        }  catch (Exception e) {
+            throw new ServiceException(e.getMessage());
         }
     }
 
@@ -50,8 +61,11 @@ public class IPlayerService implements PlayerService {
             preCreate(entity);
             Player created = this.playerRepository.save(entity);
             return created.getId();
+        } catch (ServiceValidationException ex) {
+            List<ErrorDetail> validationErrors = ex.getValidationErrors();
+
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new ServiceException(e.getMessage());
         }
     }
 
@@ -61,9 +75,8 @@ public class IPlayerService implements PlayerService {
             preUpdate(entity);
             return null;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new ServiceException(e.getMessage());
         }
-
     }
 
     @Override
@@ -82,9 +95,9 @@ public class IPlayerService implements PlayerService {
                 errors.add(new ErrorDetail("Name", "Already exists player with this name"));
             }
 
-//            if (!errors.isEmpty()) {
-//
-//            }
+            if (!errors.isEmpty()) {
+                throw new ServiceValidationException(errors);
+            }
 
         } catch (ServiceException e) {
             throw new ServiceException(e.getMessage());
